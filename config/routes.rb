@@ -1,4 +1,8 @@
 DBTool::Application.routes.draw do
+  get "search/_form"
+
+  get "search/new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
