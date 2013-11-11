@@ -32,6 +32,8 @@ GEM
     activesupport (3.2.14)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -144,6 +146,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgres-hstore
+  annotate (= 2.5.0)
   bootstrap-sass-rails (= 2.0.4.3)
   cancan
   coffee-rails (= 3.2.2)

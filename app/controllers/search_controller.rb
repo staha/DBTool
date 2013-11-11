@@ -3,13 +3,11 @@ class SearchController < ApplicationController
   end
 
   def new
-  	  @search = ''
+  	#transcript = Transcript.find params[:transcript_id]
+	@search = ''
 
   end
 
-  def create
-    @search = Search.create! params[:search]
-    redirect_to @search
-  end
+  
 
 end
