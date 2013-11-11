@@ -1,2 +1,11 @@
-%h1 Search#_form
-%p Find me in app/views/search/_form.html.haml
+.well
+  =form_for search do |f|
+    %h3 Please specify a date range...
+    #search-span.row-fluid
+      .span2
+        =f.label :start_date
+        =f.text_field :start_date
+      .span2
+        =f.label :end_date
+        =f.text_field :end_date
+    .pull-right=f.submit 'Search', class: 'btn'
