@@ -3,5 +3,13 @@ class SearchController < ApplicationController
   end
 
   def new
+  	  @search = ''
+
   end
+
+  def create
+    @search = Search.create! params[:search]
+    redirect_to @search
+  end
+
 end
