@@ -5,7 +5,7 @@ class LmsDatabase < ActiveRecord::Base
 
 	if lms_database_url.present?
 		establish_connection(
-			adapter:  postgresql,
+			adapter:  'postgresql',
 			host:     url.host, 
 			username: url.userinfo.split(':')[0],
 			password: url.userinfo.split(':')[1],
