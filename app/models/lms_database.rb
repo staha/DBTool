@@ -4,6 +4,8 @@ class LmsDatabase < ActiveRecord::Base
 	lms_database_url = ENV['LMS_DATABASE_URL']
 
 	if lms_database_url.present?
+		 url = URI.parse(lms_database_url)
+
 		establish_connection(
 			adapter:  'postgresql',
 			host:     url.host, 
