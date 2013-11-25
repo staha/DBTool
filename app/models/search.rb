@@ -11,19 +11,24 @@
 class Search < ActiveRecord::Base	
   attr_accessible :end_date, :start_date
 
-	def transcript
-  		@transcript ||= find_transcripts
+	def dialogue_lines
+  		@dialogue_lines ||= find_dialogue_lines
   		
-  		return @transcript
+  		return @dialogue_lines
 	end
 
 	private 
 
-	def find_transcripts
-		transcript = Transcript.order("created_at DESC")
-		transcript = transcript.where("created_at >= ?", self.start_date) if self.start_date.present?
-    	transcript = transcript.where("created_at <= ?", self.end_date) if self.end_date.present?	
-    	return transcript
+	def find_dialogue_lines
+
+		dialogue_lines = DialogueLine.order("created_at DESC").limit(10)
+		dialogue_lines = dialogue_lines.where("speaker != ?", "Tina Jones")
+		dialogue_lines = dialogue_lines.where("match_status IS NOT NULL")
+		dialogue_lines = dialogue_lines.where("match_status != ?", "good") 
+		dialogue_lines = dialogue_lines.where("listener = ?", "Tina Jones")
+		dialogue_lines = dialogue_lines.where("created_at >= ?", self.start_date) if self.start_date.present?
+    	dialogue_lines = dialogue_lines.where("created_at <= ?", self.end_date) if self.end_date.present?	
+    	return dialogue_lines
     end	
 end
 

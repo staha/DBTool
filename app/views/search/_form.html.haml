@@ -4,10 +4,10 @@
     .row-fluid
       .span2 
         =f.label :start_date
-        =f.text_field :start_date
+        =f.text_field :start_date, :value => @search.try(:start_date).try(:strftime,'%m/%d/%Y')
       .span2
         =f.label :end_date
-        =f.text_field :end_date
+        =f.text_field :end_date, :value => @search.try(:end_date).try(:strftime,'%m/%d/%Y')
       .span2=f.submit 'Search', class: 'btn'
       
 

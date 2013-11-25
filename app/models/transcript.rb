@@ -33,7 +33,7 @@ class Transcript < LmsDatabase
    end
 
   def find_transcripts
-   transcripts = Transcript.find(231)
+   transcripts = Transcript.find params[:id]
    end
 
 

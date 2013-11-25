@@ -13,12 +13,13 @@ class SearchController < ApplicationController
     @search.start_date = @start_date
     @search.end_date = @end_date
 
-    @results = @search.transcript
+    
+    @results = @search.dialogue_lines
   end
 
-  def show 
+  def show  
     @search = Search.find params[:id]
-    @transcript = @search.transcript.page(params[:page]).per_page(100)
+    @dialogue_lines = @search.dialogue_lines.page(params[:page]).per_page(100)
   end
 
 
