@@ -6,7 +6,7 @@ DBTool::Application.routes.draw do
   
   match '/search', :to => 'search#show' 
   resources :search, only: [:show, :new, :create]
-  match '/search/search', :to => 'search#search' 
+  match '/search/index', :to => 'search#index' 
   
   match '/transcript', :to => 'transcript#show' 
   resources :transcript, only: [:show]

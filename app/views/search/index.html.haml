@@ -1,0 +1,18 @@
+=render "search/form", search: @search
+
+
+%table
+  %tr
+    %th Created At:
+  
+%ul
+- @results.each do |d|
+  %li
+    =d.created_at
+    =d.speech
+    =d.speaker
+    =d.match_status
+
+= will_paginate @results, previous_label: h("<"), next_label: h(">")
+
+

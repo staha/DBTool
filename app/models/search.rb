@@ -21,7 +21,7 @@ class Search < ActiveRecord::Base
 
 	def find_dialogue_lines
 
-		dialogue_lines = DialogueLine.order("created_at DESC").limit(10)
+		dialogue_lines = DialogueLine.order("created_at DESC")
 		dialogue_lines = dialogue_lines.where("speaker != ?", "Tina Jones")
 		dialogue_lines = dialogue_lines.where("match_status IS NOT NULL")
 		dialogue_lines = dialogue_lines.where("match_status != ?", "good") 

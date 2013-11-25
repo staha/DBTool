@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     @search = Search.new
   end
 
-  def search
+  def index
     @start_date = params[:search][:start_date]
     @end_date = params[:search][:end_date]
 
@@ -13,8 +13,8 @@ class SearchController < ApplicationController
     @search.start_date = @start_date
     @search.end_date = @end_date
 
-    
-    @results = @search.dialogue_lines
+
+    @results = @search.dialogue_lines.page(params[:page]).per_page(5)
   end
 
   def show  
