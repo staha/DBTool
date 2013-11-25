@@ -1,0 +1,26 @@
+/ .well
+/   =form_for transcript do |f|
+/     %h3 Please specify a date range...
+/     .row-fluid
+/       .span2
+/         =f.label :start_date
+/         =f.text_field :start_date
+/       .span2
+/         =f.label :end_date
+/         =f.text_field :end_date
+/       .span2=f.submit 'Search', class: 'btn'
+
+      /-cache course do
+  / =render "search/form", transcript: @transcript
+
+/- title "Product"
+%p
+  %strong Lines of Dialogue Count:
+  = @transcript.lines_of_dialogue_count
+%p
+  %strong Student ID:
+  = @transcript.student_id
+%p
+  %strong Created At:
+  = @transcript.created_at
+

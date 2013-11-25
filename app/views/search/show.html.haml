@@ -1,0 +1,22 @@
+=render "search/form", search: @search
+
+/- title "Search Results"
+
+%table
+  %tr
+    %th Assignment Attempt ID:
+    %th Student ID:
+    %th Created At:
+  =render @transcript
+
+.pull-right
+  =will_paginate @transcript
+/ %p
+/   %strong Assignment Attempt ID:
+/   = @transcript.assignment_attempt_id
+/ %p
+/   %strong Student ID:
+/   = @transcript.student_id
+/ %p
+/   %strong Created At:
+/   = @transcript.created_at

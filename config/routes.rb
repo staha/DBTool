@@ -1,7 +1,20 @@
 DBTool::Application.routes.draw do
-  get "search/_form"
+  devise_for :users
 
-  get "search/new"
+  
+  root :to => "search#new"
+  
+  match '/search', :to => 'search#show' 
+  resources :search, only: [:show, :new, :create]
+  match '/search/search', :to => 'search#search' 
+  
+  match '/transcript', :to => 'transcript#show' 
+  resources :transcript, only: [:show]
+  
+
+   # resources :transcripts
+
+  # root :to => "transcript#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

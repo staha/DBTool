@@ -8,20 +8,23 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-class Search < ActiveRecord::Base
+class Search < ActiveRecord::Base	
   attr_accessible :end_date, :start_date
 
-	def transcripts
-  		@transcripts ||= find_transcripts
+	def transcript
+  		@transcript ||= find_transcripts
   		
-  		return @transcripts
+  		return @transcript
 	end
+
+	private 
 
 	def find_transcripts
-		transcripts = Transcript.scoped
-	end
-
+		transcript = Transcript.order("created_at DESC")
+		transcript = transcript.where("created_at >= ?", self.start_date) if self.start_date.present?
+    	transcript = transcript.where("created_at <= ?", self.end_date) if self.end_date.present?	
+    	return transcript
+    end	
 end
 
 

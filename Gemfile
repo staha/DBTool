@@ -11,6 +11,7 @@ group :development do
 	gem 'annotate', '2.5.0'
 end 
 
+gem 'meta_request', '0.2.8'
 gem 'activerecord-postgres-hstore'
 gem 'bootstrap-sass-rails', '= 2.0.4.3'
 gem 'cancan'
