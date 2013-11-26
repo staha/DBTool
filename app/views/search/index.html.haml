@@ -1,17 +1,24 @@
 =render "search/form", search: @search
 
+%p
+  Download:
+  \#{link_to "CSV", {controller: "search", action: "index", format: "csv", params: {search: {start_date: @start_date, end_date: @end_date}}}} |
+  \#{link_to "Excel", {controller: "search", action: "index", format: "xls", params: {search: {start_date: @start_date, end_date: @end_date}}}}
 
-%table
+
+%table.table
   %tr
-    %th Created At:
+    %th Created At
+    %th Speech
+    %th Speaker
+    %th Match Status
   
-%ul
-- @results.each do |d|
-  %li
-    =d.created_at
-    =d.speech
-    =d.speaker
-    =d.match_status
+  - for result in @results
+    %tr
+      %td= result.created_at
+      %td= result.speech
+      %td= result.speaker
+      %td= result.match_status
 
 = will_paginate @results, previous_label: h("<"), next_label: h(">")
 

@@ -1,12 +1,12 @@
 .well
-  =form_for @search, url: {action: "index"} do |f|
-    %h3 Please specify a date range...
+  =form_for @search, url: {action: "index"}, method: "get" do |f|
+    %h3 Specify a date range:
     .row-fluid
-      %div{:class => "span2 input-append date", :id => "from-date", "data-date-format" => "yyyy-mm-dd"}
+      %div{:class => "input-append date pull-left", :id => "from-date", "data-date-format" => "yyyy-mm-dd"}
         =f.label :start_date
-        =f.text_field :start_date, :value => @search.try(:start_date).try(:strftime,'%m/%d/%Y'), class: "datepicker"
-      %div{:class => "span2 input-append date", :id => "to-date", "data-date-format" => "yyyy-mm-dd"}
+        =f.text_field :start_date, :value => @search.try(:start_date).try(:strftime,'%Y-%m-%d'), class: "datepicker"
+      %div{:class => "input-append date pull-left", :id => "to-date", "data-date-format" => "yyyy-mm-dd"}
         =f.label :end_date
         =f.text_field :end_date, :value => @search.try(:end_date).try(:strftime,'%m/%d/%Y'), class: "datepicker"
-      .div=f.submit 'Search', class: 'btn btn-info btn-large submit-button'
+      .div=f.submit 'Search', class: 'btn btn-info btn-large submit-button pull-left'
 

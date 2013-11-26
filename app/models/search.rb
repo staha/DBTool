@@ -11,6 +11,15 @@
 class Search < ActiveRecord::Base	
   attr_accessible :end_date, :start_date
 
+  	def self.to_csv(options = {})
+  	  CSV.generate(options) do |csv|
+    	csv << column_names
+    	all.each do |search|
+      	  csv << search.attributes.values_at(*column_names)
+    	end
+  	  end
+	end
+	
 	def dialogue_lines
   		@dialogue_lines ||= find_dialogue_lines
   		

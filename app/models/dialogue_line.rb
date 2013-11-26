@@ -16,4 +16,16 @@ class DialogueLine < LmsDatabase
   default_scope order: 'dialogue_lines.position ASC'
 
   delegate :chapter, to: :transcript
+
+  def self.to_csv(options = {})
+      columns = [:created_at, :speech, :speaker, :match_status]
+      CSV.generate(options) do |csv|
+      csv << columns
+      all.each do |search|
+          csv << [search.created_at, search.speech, search.speaker, search.match_status]
+      end
+      end
+  end
+
 end
+
