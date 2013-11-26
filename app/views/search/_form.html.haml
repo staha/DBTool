@@ -4,7 +4,7 @@
     .row-fluid
       %div{:class => "input-append date pull-left", :id => "from-date", "data-date-format" => "yyyy-mm-dd"}
         =f.label :start_date
-        =f.text_field :start_date, :value => @search.try(:start_date).try(:strftime,'%Y-%m-%d'), class: "datepicker"
+        =f.text_field :start_date, :value => @search.try(:start_date).try(:strftime,'%m/%d/%Y'), class: "datepicker"
       %div{:class => "input-append date pull-left", :id => "to-date", "data-date-format" => "yyyy-mm-dd"}
         =f.label :end_date
         =f.text_field :end_date, :value => @search.try(:end_date).try(:strftime,'%m/%d/%Y'), class: "datepicker"
