@@ -2,16 +2,16 @@
 
 %p
   Download:
-  \#{link_to "CSV", {controller: "search", action: "index", format: "csv", params: {search: {start_date: @start_date, end_date: @end_date}}}} |
-  \#{link_to "Excel", {controller: "search", action: "index", format: "xls", params: {search: {start_date: @start_date, end_date: @end_date}}}}
+  \#{link_to "CSV", {controller: "search", action: "index", format: "csv", params: {search: {start_date: @start_date, end_date: @end_date}, sort: @sort, direction: @direction}}} |
+  \#{link_to "Excel", {controller: "search", action: "index", format: "xls", params: {search: {start_date: @start_date, end_date: @end_date}, sort: @sort, direction: @direction}}}
 
 
 %table.table
   %tr
-    %th Created At
-    %th Speech
-    %th Speaker
-    %th Match Status
+    %th= sortable "created_at", @start_date, @end_date, "Date Created"
+    %th= sortable "speech", @start_date, @end_date
+    %th= sortable "speaker", @start_date, @end_date
+    %th= sortable "match_status", @start_date, @end_date, "Match Status"
   
   - for result in @results
     %tr

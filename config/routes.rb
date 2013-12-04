@@ -6,8 +6,8 @@ DBTool::Application.routes.draw do
   
   get '/search/index', :to => 'search#index' 
   
-  match '/transcript', :to => 'transcript#show' 
-  resources :transcript, only: [:show]
+  # match '/transcript', :to => 'transcript#show' 
+  # resources :transcript, only: [:show]
   
 
    # resources :transcripts

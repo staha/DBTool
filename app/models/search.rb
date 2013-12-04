@@ -11,26 +11,26 @@
 class Search < ActiveRecord::Base	
   attr_accessible :end_date, :start_date
 
-  	def self.to_csv(options = {})
-  	  CSV.generate(options) do |csv|
-    	csv << column_names
-    	all.each do |search|
-      	  csv << search.attributes.values_at(*column_names)
-    	end
-  	  end
-	end
+  	
 	
-	def dialogue_lines
-  		@dialogue_lines ||= find_dialogue_lines
+	def dialogue_lines(column, direction)
+  		@dialogue_lines ||= find_dialogue_lines(column, direction)
   		
   		return @dialogue_lines
 	end
 
 	private 
 
-	def find_dialogue_lines
+	def find_dialogue_lines(column, direction) 
 
-		dialogue_lines = DialogueLine.order("created_at DESC")
+		if !column
+			column = "created_at"
+		end
+		if !direction
+			direction = "ASC"
+		end
+
+		dialogue_lines = DialogueLine.order(column + " " + direction)
 		dialogue_lines = dialogue_lines.where("speaker != ?", "Tina Jones")
 		dialogue_lines = dialogue_lines.where("match_status IS NOT NULL")
 		dialogue_lines = dialogue_lines.where("match_status != ?", "good") 

@@ -13,8 +13,6 @@ class DialogueLine < LmsDatabase
   validates_uniqueness_of :speech, scope: [:transcript_id, :said_at]
   validates_uniqueness_of :position, scope: :transcript_id
 
-  default_scope order: 'dialogue_lines.position ASC'
-
   delegate :chapter, to: :transcript
 
   def self.to_csv(options = {})
