@@ -9,9 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Search < ActiveRecord::Base	
-  attr_accessible :end_date, :start_date
-
-  	
+  attr_accessible :end_date, :start_date 	
 	
 	def dialogue_lines(column, direction)
   		@dialogue_lines ||= find_dialogue_lines(column, direction)
@@ -30,7 +28,7 @@ class Search < ActiveRecord::Base
 			direction = "ASC"
 		end
 
-		dialogue_lines = DialogueLine.order(column + " " + direction)
+		dialogue_lines = DialogueLine.readonly.order(column + " " + direction)
 		dialogue_lines = dialogue_lines.where("speaker != ?", "Tina Jones")
 		dialogue_lines = dialogue_lines.where("match_status IS NOT NULL")
 		dialogue_lines = dialogue_lines.where("match_status != ?", "good") 
